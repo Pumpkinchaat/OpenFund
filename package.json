@@ -1,0 +1,11 @@
+{
+  "name": "openfund",
+  "version": "1.0.0",
+  "description": "OpenFund is an open accounting system backed by etherium blockchain created by Manojna Vinjamuri, Susmit Singh ()\u001b[DTeam Sumo) for Woman Techies 22 hackathon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Team Sumo",
+  "license": "ISC"
+}
