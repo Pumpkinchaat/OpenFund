@@ -99,7 +99,8 @@ contract Campaign{
            if(req.voters[donors_details[i].donar]){
                 adrs = donors_details[i].donar;
                 amount = donors_amount[adrs];
-                percent= uint(100/balance)*amount;
+                uint p = amount * 100;
+                percent = percent+ uint(p/balance);
            }
        }
        req.votingPercentage = percent; 
@@ -122,7 +123,6 @@ contract Campaign{
     function closeCamplaign() public restricted{
         require(balance == 0,"the balance is not equal to 0");
         status = true;
-        selfdestruct(owner);
     }
 
     function summary() public view returns (
