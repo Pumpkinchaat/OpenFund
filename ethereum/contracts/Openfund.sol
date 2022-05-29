@@ -110,6 +110,11 @@ contract Campaign{
        balance -= req.amount;
        req.status = true;
     }
+    
+     function VoteOrnot(uint index,address add) view public returns(bool){
+        Requests storage req  = request[index];
+        return req.voters[add];
+    }
 
     function getDonarDetailsLength() view public returns(uint){
         return donors_details.length;
