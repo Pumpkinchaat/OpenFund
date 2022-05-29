@@ -49,20 +49,27 @@ contract Campaign{
     }
 
     //users can donate here the amount for a campaign
-    function donations(uint amount,string memory name,string memory message) payable public{
-        require(amount *1 ether == msg.value, "Please check the amount entered");
+    function donations(string name,string message) payable public{
+        require(msg.value > 0, "Please check the amount entered");
         require(!status);
-        donors_details.push(Donor_details(name,message,msg.sender,amount,block.timestamp));
+        donors_details.push(Donor_details(name,message,msg.sender,msg.value,block.timestamp));
         donors[msg.sender] = true;
-        donors_amount[msg.sender] += amount;
-        balance += amount;
+        donors_amount[msg.sender] += msg.value;
+        balance += msg.value;
     }
 
     //the function restricted to owner,  the owner creats the request asking 
     //certain amount of money from total balance and stating reason behind that 
 
     function CreateRequest(string memory reason, uint amount, address receiver) public restricted {
-        request.push(Requests(receiver, amount,0,reason,false));
+        Requests memory newRequest = Requests({
+            receiver: receiver,
+            amount: amount,
+            votingPercentage: 0,
+            reason: reason,
+            status: false
+        });
+        request.push(newRequest); //!DO NOT TOUCH
     }
 
     //The function allows the users to vote and gives 1 vote to 1 donar
@@ -116,6 +123,16 @@ contract Campaign{
         require(balance == 0,"the balance is not equal to 0");
         status = true;
         selfdestruct(owner);
+    }
+
+    function summary() public view returns (
+        address , string , uint
+    ) {
+        return (
+            owner,
+            campaign_Name,
+            balance
+        );   
     }
 
     modifier restricted(){

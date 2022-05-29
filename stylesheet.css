@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* This is for scrollbar DO NOT TOUCH */
+*::-webkit-scrollbar-track
+{
+	border: 1px solid black;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar
+{
+	width: 10px;
+	background-color: #F5F5F5;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	background-color: #000000;	
+}
+/* This is for scrollbar DO NOT TOUCH */
+
+
+html {
+  font-size: 16px;
+  font-family: "Roboto", sans-serif;
+  max-width: 100vw;
+  max-height: 100vh;
+}
+
+body {
+  max-height: 100vh;
+  max-width: 100vw;
+  background-color: #f8ede3;
+}
+
+button {
+  margin-right: 1rem !important;
+}
+
+#main-body {
+  /* height: 100vh; */
+  margin-bottom: 5rem;
+}

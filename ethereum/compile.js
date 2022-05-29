@@ -10,6 +10,7 @@ fs.removeSync(buildPath);
 const contractPath = path.resolve(__dirname, "contracts", "Openfund.sol");
 const source = fs.readFileSync(contractPath, "utf8");
 const output = solc.compile(source, 1).contracts;
+console.log(solc.compile(source , 1));
 
 //this will make the build folder once more
 fs.ensureDirSync(buildPath);
